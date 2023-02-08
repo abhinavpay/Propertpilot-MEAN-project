@@ -1,0 +1,136 @@
+//1 import express
+
+const express = require('express')
+
+//5 import cors
+
+const cors = require('cors')
+
+
+//import dataservices
+
+const dataservices = require('./services/dataService')
+const { Contactlist } = require('./services/db')
+
+//2 create an application using express
+
+const app = express()
+
+//3 use json parser for serve creaetion for converting json data
+
+app.use(express.json())
+
+
+//6 using cors specify the origin to the server
+
+app.use(cors({
+    origin:'http://localhost:4200'
+}))
+
+
+
+//4 set up a port number
+
+app.listen(3000,()=>{
+    console.log('listening on port 3000');
+})
+
+
+
+//api call to get all properties
+
+app.get('/all-properties',(req,res)=>{
+    dataservices.getProperties().then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
+
+
+app.get('/view-properties/:id',(req,res)=>{
+    dataservices.viewProperties(req.params.id).then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
+
+
+//add to wislist
+
+app.post('/addtowishlist',(req,res)=>{
+
+    dataservices.addtowishlist(req.body.id,req.body.name,req.body.price,req.body.place,req.body.image).then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
+
+
+//get wishlist
+
+app.get('/getwishlist',(req,res)=>{
+
+    dataservices.getwishlist().then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
+
+
+//delete wishlist
+
+app.delete('/deletewish/:id',(req,res)=>{
+    dataservices.deletewish(req.params.id).then(
+        result=>{
+            res.status(result.statusCode).json.result
+        }
+    )
+})
+
+
+//register
+
+app.post('/register',(req,res)=>{
+
+    dataservices.register(req.body.username,req.body.password).then(
+        result =>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+})
+
+
+//login
+
+app.post('/login',(req,res)=>{
+
+    dataservices.login(req.body.username,req.body.password).then(
+        result =>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+
+})
+
+
+//contactlist to admin
+
+app.post('/contactlist',(req,res)=>{
+
+    dataservices.contactlist(req.body.name,req.body.phone,req.body.address,req.body.message).then(
+        result=>{
+            res.status(result.statusCode).json(result)
+        }
+    )
+
+})
+
+
+
+
+
+

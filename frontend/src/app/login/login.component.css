@@ -1,0 +1,122 @@
+/* header */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+    list-style: none;
+    text-decoration: none;
+    
+}
+
+
+
+/* login **********************************************/
+
+.login{
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin-left: 190px;
+    margin-top: 50px;
+    
+
+}
+
+.login-container{
+
+    display:flex;
+    flex-direction: column;
+    /* row-gap: 1rem; */
+}
+
+.login-container h2{
+    font-size: 1.8rem;
+}
+
+.login-container p{
+    font-size: 1rem;
+}
+
+.login-container  form{
+
+    display: flex;
+    flex-direction:column;
+}
+
+.login-container form span {
+
+    font-size: 0.9rem;
+    color: #8a8a8a;
+    margin-bottom: 4px;
+
+}
+
+.login-container form  input{
+
+    /* background-color: #f6f6fe; */
+    /* box-shadow: 2px 2px 18px rgb(14 52 54 / 15%); */
+    padding: 6px 10px;
+    border-radius: 0.4rem;
+    /* border:none; */
+    /* outline: none; */
+    /* font-size: 1.2rem;   */
+}
+
+
+
+
+.login-container form .button{
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    background: #751178;
+    color: #f6f6fe;
+    font-size: 0.98rem;
+    font-weight: 500;
+
+}
+
+
+.login-container form a{
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+
+img{
+    width: 68%;
+    margin-left: 180px;
+}
+
+.btn{
+    
+    padding: 8px 22px;
+    background: #751178;
+    color: white;
+    border:2px solid #751178;
+    margin-top: 1.5rem;
+}
+
+.btn:hover{
+    background:#751178;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

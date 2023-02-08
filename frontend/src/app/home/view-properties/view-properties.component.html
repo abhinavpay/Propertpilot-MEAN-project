@@ -1,0 +1,147 @@
+<div class="container" >
+
+    <!-- carousel -->
+
+    <div id="carouselExampleIndicators" class="carousel slide " data-bs-ride="true">
+        <div class="carousel-indicators ">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" *ngFor="let property of allproperties">
+          <div class="carousel-item active">
+            <img [src]="property.image" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img [src]="property.bedimg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img [src]="property.kitchen" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+
+      <!-- details -->
+
+      <div class="card" *ngFor="let property of allproperties">
+        <div class="card-body">
+          <h2 class="text-center">{{property.name}}</h2>
+          <span>
+            <ul>
+                 <li>Bedrooms</li>
+                <li>Bathroom</li>
+                <li>SqaureFeet</li>
+                <li>Status</li>
+            </ul>
+        </span>
+
+            <span >
+                <ul id="icon">
+                    
+                        <li><i class="fa-solid fa-bed"></i>{{property.bedroom}}</li>
+                        <li><i class="fa-solid fa-bath"></i>{{property.bathroom}}</li>
+                        <li><i class="fa-solid fa-landmark"></i>{{property.squarefeet}}</li>
+                        <li><i class="fa-solid fa-flag"></i>{{property.status}}</li>
+                   
+                       
+                </ul>
+            </span>
+        </div>
+
+        <!-- about  -->
+
+        <div class="about">
+        <h3>About This Home</h3>
+
+        <p>{{property.description}}</p>
+    
+    </div>
+
+    <div >
+      
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Contact Owner</button>
+    </div>
+
+      </div>
+
+
+
+      <!-- modal -->
+
+
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Please Fill Your Contact Information</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="contactForm">
+                <div class="mb-3">
+                  
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Enter Name</mat-label>
+                    <input formControlName="name" matInput  maxlength="400" placeholder="">
+                    <p  *ngIf="this.contactForm.get('name')?.errors && this.contactForm.get('name')?.touched" style="color: red;">Invalid Username</p>
+                    </mat-form-field>
+              
+                </div>
+
+                <div class="mb-3">
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Enter Mobile Number</mat-label>
+                    <input  formControlName="phone" matInput #message maxlength="400" placeholder="">
+                    <p  *ngIf="this.contactForm.get('phone')?.errors && this.contactForm.get('phone')?.touched" style="color: red;">Invalid Mobile Number</p>
+                    </mat-form-field>
+
+                
+                  </div>
+
+                  <div class="mb-3">
+
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Adress</mat-label>
+                      <input formControlName="address" matInput #message maxlength="400" placeholder="">
+                      <p  *ngIf="this.contactForm.get('address')?.errors && this.contactForm.get('address')?.touched" style="color: red;">Invalid password</p>
+                      </mat-form-field>
+              
+                  </div>
+
+                  <div class="mb-3">
+                    
+                    <mat-form-field appearance="fill" class="example-full-width">
+                      <mat-label>Message</mat-label>
+                      <textarea formControlName="message" matInput #message maxlength="400" ></textarea>
+                      <p  *ngIf="this.contactForm.get('message')?.errors && this.contactForm.get('message')?.touched" style="color: red;">Invalid password</p>
+                    </mat-form-field>
+
+                  </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="modal-btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button (click)="send()" type="button" class="modal-btn btn-primary">Send message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    
+
+</div>
+
+
+
+

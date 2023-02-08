@@ -1,0 +1,62 @@
+
+            <div class="login container">
+                <div class="login-container">
+                <h2>Welcome , Let's get started</h2>
+                <p>Already have a account <a href="">Log In</a><p>
+
+                    <!-- register form -->
+
+                    <form [formGroup]="registerForm" action="">
+                        <span>Full Name</span>
+                        <input formControlName="uname" type="text" name="" id="" placeholder="Your Name" required>
+
+                        <p  *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched" style="color: red;">Invalid Username</p>
+
+                        <span>Enter Your email</span>
+
+                        <input type="email" name="" id=""
+                        formControlName="email" placeholder="youremail@gmail.com" required>
+                        <p  *ngIf="this.registerForm.get('email')?.errors && this.registerForm.get('email')?.touched" style="color: red;">Invalid email</p>
+
+                        <span>Phone</span>
+                        
+                        <input type="tel" placeholder="Enter your phone number" formControlName="phone" required>
+                        
+                        <p  *ngIf="this.registerForm.get('phone')?.errors && this.registerForm.get('phone')?.touched" style="color: red;">Invalid Mobile Number</p>
+
+                        <span>Enter your password</span>
+
+                        <input formControlName="pswd" type="password" placeholder="At least 3" required>
+
+                        <p  *ngIf="this.registerForm.get('pswd')?.errors && this.registerForm.get('pswd')?.touched" style="color: red;">Invalid password</p>
+
+                        <button (click)="register()" type="submit" value="Register" class="btn">Register</button>
+
+                        <a href="#">Already have an account</a>
+                    </form> 
+
+                    <a class="btn">Log In </a>
+                    
+            </div>
+
+            <!-- login image -->
+
+            <div class="login-image">
+                <img src="../../assets/v2.jpg" alt="">
+            </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

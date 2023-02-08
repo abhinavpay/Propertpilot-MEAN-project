@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Asap:wght@300&family=Itim&family=Mukta&family=Noto+Sans+HK:wght@100;400&family=Noto+Sans+Symbols+2&family=Pacifico&family=Shadows+Into+Light&display=swap');
+p{
+    font-family: 'Source Code Pro', monospace;
+    font-size: 30px;
+    line-height: 2;
+}

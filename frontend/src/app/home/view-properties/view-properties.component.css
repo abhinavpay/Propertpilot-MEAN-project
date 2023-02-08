@@ -1,0 +1,146 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+    list-style: none;
+    text-decoration: none;
+    
+} */
+
+/* *{
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+} */
+
+/* carousel *************************/
+
+
+
+.carousel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 150px; */
+    /* width: 50rem; */
+    background-size: cover;
+    overflow: hidden;
+    height: 70vh;
+    width: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+    
+    
+
+    
+}
+
+
+.carousel-item img{
+    /* height: 40rem; */
+    overflow: hidden;
+    
+    
+}
+
+
+
+/* card *************************************/
+
+.card{
+    margin-bottom: 50px;
+}
+
+
+.card .card-body span ul{
+
+    display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(240px,auto));
+        gap:3.5rem;
+        /* margin-left: 30px; */
+
+}
+
+
+
+#icon {
+    
+    margin-top: 30px;
+}
+
+#icon li i{
+
+    margin: 10px;
+
+}
+
+.about{
+    margin-top: 40px;
+}
+
+.about h3{
+    text-decoration: underline;
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+.about p{
+
+    padding: 25px;
+}
+
+.btn{
+    
+    
+        padding: 8px 22px;
+        border: none;
+        border-radius: 2rem;
+        border: 2px solid #751178;
+        margin-left: 45%;
+        margin-bottom: 1rem;
+    
+    
+    
+}
+
+.btn:hover{
+    background:#751178;
+    color: white;
+}
+
+
+
+/* modal */
+
+.modal-btn{
+    border-radius: 2rem;
+    border: 2px solid #751178;
+}
+
+.modal-btn:hover{
+    background:#751178;
+    color: white;
+}
+
+
+
+.modal-footer .btn{
+    color: #751178;
+}
+
+.modal-footer .btn:hover{
+    background:#751178;
+    color: white;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }

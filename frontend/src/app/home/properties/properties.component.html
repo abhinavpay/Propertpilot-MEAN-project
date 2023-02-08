@@ -1,0 +1,62 @@
+
+
+<!-- search bar ------------------------------------------------------------->
+
+<div class="container">
+   
+
+
+<!-- .properties -->
+
+<section data-aos="fade-up"
+data-aos-anchor-placement="bottom-bottom" data-aos-duration="3000" class="properties container" id="properties">
+
+    <div class="heading">
+        <h2>Search  properties</h2>
+        <div class="searchbar">
+          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="search  by location"  (keyup)="search($event)">
+
+          
+        </div>
+        <!-- <button  type="submit" value="Search" class="btn">Search</button> -->
+    </div>
+
+    <div class="properties-container container" >
+
+        <!-- box-1     -->
+
+        <div  class="box" *ngFor="let properties of allproperties | paginate: { itemsPerPage:itemsPerPage , currentPage: p} | filter:searchTerm:'place' ">
+            <img [src]="properties.image" alt="">
+
+            <h3 class="price">${{properties.price}}</h3>
+            <a (click)="addtoWishlist(properties)"  class="heart"><i class="fa fa-heart"></i></a>
+            <div class="content">
+                <div class="text">
+                    
+                    <h3>{{properties.name}}</h3>
+                    <p>{{properties.place}}</p>
+                </div>
+                <div class="icon">
+
+                    <a routerLink = '/viewproperties/{{properties.id}}' class="btn">View more</a>
+                    <!-- <i class="fa-solid fa-bed"><span>5</span></i>
+                    <i class="fa-solid fa-bath"><span>3</span></i> -->
+                </div>
+            </div>
+
+
+        </div>
+
+        
+    </div>
+</section>
+
+<div class="text-center p-5">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+
+
+
+</div>
+

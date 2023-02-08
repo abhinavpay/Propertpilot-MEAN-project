@@ -1,0 +1,7 @@
+if(this.wishlist.length==0){
+          this.error='empty wishlist'
+          
+        },
+      (result:any)=>{
+        alert(result.error.message)
+      }

@@ -1,0 +1,54 @@
+
+
+    
+            <div class="login container">
+                <div class="login-container">
+                <h2>Login To continue</h2>
+                <p>Login with your data that you entered <br> during your registration<p>
+
+                    <!-- login form -->
+
+                    <form [formGroup]="loginForm" action="">
+                        <span>Enter your email address</span>
+                        <input formControlName="uname" type="text" name="" id="email" placeholder="enter your username" required>
+
+                        <p  *ngIf="this.loginForm.get('uname')?.errors && this.loginForm.get('uname')?.touched" style="color: red;">Invalid Username</p>
+
+                        <span>Enter Your Password</span>
+
+                        <input formControlName="pswd" type="password" placeholder="Password" required>
+                        <p  *ngIf="this.loginForm.get('pswd')?.errors && this.loginForm.get('pswd')?.touched" style="color: red;">Invalid password</p>
+
+
+                        <button (click)="login()" type="submit" value="" class="btn">Log In</button>
+
+                        <a href="#">Forget Password?</a>
+                    </form> 
+
+                    <a routerLink="/register" class="btn">Sign Up now</a>
+                    
+            </div>
+
+            <!-- login image -->
+
+            <div class="login-image">
+                <img src="../../assets/v1.jpg" alt="">
+            </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
