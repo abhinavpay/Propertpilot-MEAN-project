@@ -11,7 +11,10 @@ import { ApiService } from '../api.service';
 export class ViewPropertiesComponent implements OnInit {
 
   allproperties:any=[]
+  
   property:any=[];
+
+  
   constructor(private api:ApiService,private route:ActivatedRoute,private fb:FormBuilder,private router:Router){}
 
 
@@ -32,6 +35,8 @@ export class ViewPropertiesComponent implements OnInit {
     ) 
     
 
+
+
     
   }
 
@@ -45,6 +50,8 @@ export class ViewPropertiesComponent implements OnInit {
   })
 
 
+  
+
 send(){
 
    var name =this.contactForm.value.name;
@@ -53,23 +60,32 @@ send(){
    var message =this.contactForm.value.message;
 
 
-   if(this.contactForm.valid){
-    const result = this.api.addcontact(name,phone,address,message).subscribe(
-      (result:any)=>{
+   
 
-        alert(result.message)
-        this.router.navigateByUrl('properties')
-        
-
-      },
-      result=>{
-        alert(result.error.message)
+    if(this.contactForm.valid){
+      const result = this.api.addcontact(name,phone,address,message).subscribe(
+        (result:any)=>{
+  
+          alert(result.message)
+          this.router.navigateByUrl('properties')
+          
+  
+        },
+        result=>{
+          alert(result.error.message)
+        }
+  
+      )
       }
 
-    )
-    }
+   
+   
+
+   
    }
-    
+
+   
+  
   }
     
 

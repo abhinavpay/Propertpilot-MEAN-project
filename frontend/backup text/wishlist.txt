@@ -1,0 +1,121 @@
+html
+
+<div class="container text-center m-5" *ngIf="error">
+    <div class="row">
+        <div class="col">
+            <img style="width: 40%;" src="../../../assets/moving house.gif" alt="">
+            <h3 class="m-4">Your Wishlist is empty</h3>
+            <button class="btn btn-primary m-3" routerLink="/properties">Go Back</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- box -->
+
+
+<div class="properties">
+<div class="properties-container container" >
+
+    <!-- box-1     -->
+
+    <div  class="box" *ngFor="let properties of wishlist">
+        <img [src]="properties.image" alt="">
+
+        <h3 class="price">${{properties.price}}</h3>
+        
+        <div class="content">
+            <div class="text">
+                <button (click)="deletewish(properties)"  class="trash mt-auto"><i class="fa fa-trash"></i></button>
+                <h3>{{properties.name}}</h3>
+                <p>{{properties.place}}</p>
+            </div>
+            <div class="icon">
+
+                <a routerLink = '/viewproperties/{{properties.id}}' class="btn">View more</a>
+                <!-- <i class="fa-solid fa-bed"><span>5</span></i>
+                <i class="fa-solid fa-bath"><span>3</span></i> -->
+            </div>
+        </div>
+
+
+    </div>
+
+    
+</div>
+</div>
+
+
+
+ts 
+
+
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
+
+@Component({
+  selector: 'app-wishlist',
+  templateUrl: './wishlist.component.html',
+  styleUrls: ['./wishlist.component.css']
+})
+export class WishlistComponent implements OnInit {
+
+wishlist:any=[]
+error:any
+  constructor(private api:ApiService,private router:Router){}
+
+  ngOnInit(): void {
+
+    this.getWishlist()
+   
+    
+  
+    
+  }
+
+
+  getWishlist(){
+
+      //get wishlist
+
+      this.api.getwishlist().subscribe(
+        (data:any)=>{
+          this.wishlist=data.property
+  
+          if(this.wishlist.length==0){
+            this.error="empty wishlist"
+          }
+        },
+        (data:any)=>{
+          this.error=data.error.message
+        }
+      )
+
+  }
+
+
+  deletewish(property:any){
+
+    this.api.deletewish(property.id).subscribe(
+
+      
+      
+      (result:any)=>{
+        
+        alert(result.message)
+        
+        this.wishlist=result.wishlist
+        
+        
+        
+      }
+      
+    )
+    this.ngOnInit()
+  }
+
+
+}

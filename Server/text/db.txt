@@ -35,18 +35,18 @@ const Property = mongoose.model('Property',{
 //create a model for wishlist , w should be capital
 
 
-// const Wishlist=mongoose.model('wishlist',{
-//     username:String,
-//     password:String,
-//     id:Number,
-//     name:String,
-//     price:Number,
-//     place:String,
-//     image:String,
-// })
+const Wishlist=mongoose.model('wishlist',{
+    username:String,
+    password:String,
+    id:Number,
+    name:String,
+    price:Number,
+    place:String,
+    image:String,
+})
 
 
-const User = mongoose.model('users',{
+const User = mongoose.model('User',{
 
     username:String,
     password:String,
@@ -67,7 +67,7 @@ const Contactlist = mongoose.model('Contactlist',{
 
 module.exports={
     Property,
-    // Wishlist,
+    Wishlist,
     User,
     Contactlist
 }

@@ -12,7 +12,6 @@ import { ApiService } from '../api.service';
 export class PropertiesComponent implements OnInit {
 
 
-  username:any;
 
   allproperties:any=[]
 
@@ -25,23 +24,7 @@ export class PropertiesComponent implements OnInit {
   itemsPerPage:number=6
   totalproperties:any
 
-  properties:any;
-
-  property:any
-
-  currentuser = localStorage.getItem('currentuser') 
-    
-  
-  
-
-constructor(private api:ApiService,private route:ActivatedRoute){
-
-  if(localStorage.getItem('currentuser')){
-    this.username=(localStorage.getItem('currentuser'))
-  }
-
-
-}
+constructor(private api:ApiService,private route:ActivatedRoute){}
 
   ngOnInit(): void {
 
@@ -64,11 +47,12 @@ constructor(private api:ApiService,private route:ActivatedRoute){
       params=>{
         this.propertyid=params.get('id')
       }
-    )    
+    )
+
+
+    
+    
   }
-
-
-  
 
   //search key
   search(event:any){
@@ -77,48 +61,19 @@ constructor(private api:ApiService,private route:ActivatedRoute){
     this.api.searchkey.next(searchkey)
   }
 
-  
-
-
 
   addtoWishlist(property:any){
 
-
-    var currentuser = localStorage.getItem('currentuser')
-      // var currentuser = JSON.parse(localStorage.getItem('currentuser')||'')
-
-      var temp = currentuser     
-
-      if(temp){
-
-        // alert(temp)
-
-        // alert(property)
+    this.api.addtoWishlist(property).subscribe(
+      (result:any)=>{
+        console.log(result);
         
-
-        this.api.addtoWishlist(property,temp).subscribe(
-      
-          (result:any)=>{
-  
-
-            console.log(result);
-            
-            alert(result.message)
-          },
-          (result:any)=>{
-            alert(result.error.message)
-          }
-        )
-
-
+        alert(result.message)
+      },
+      (result:any)=>{
+        alert(result.error.message)
       }
-      
-      
-
-
-    
-
-   
+    )
   }
   
 

@@ -7,19 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ApiService {
 
-  currentUser:any;
- 
- 
-
   constructor(private http:HttpClient) { }
-
-  deatils:any={
-    username:"abhi",
-    password:"123",
-    wishlist:[]
-  }
-
-
 
   //get all properties
 
@@ -37,22 +25,16 @@ export class ApiService {
  
   //add to wishlist
 
-  addtoWishlist(property:any,temp:any){
+  addtoWishlist(property:any){
 
     const body = {
 
-
-      username:temp,
       id:property.id,
       name:property.name,
       price:property.price,
       place:property.place,
       image:property.image
-      
     }
-
-   
-    
 
     return this.http.post('http://localhost:3000/addtowishlist',body)
 
@@ -65,33 +47,11 @@ export class ApiService {
     return this.http.get('http://localhost:3000/getwishlist')
   }
 
-
-
-  getwishfromuser(username:any){
-    
-    const body={
-      username:username
-    }
-
-    return this.http.post('http://localhost:3000/getwishlistfromuser',body)
-
-  }
-
   //delete wishlist
 
-
-  deletewish(temp:any,properties:any){
-
-    const body={
-      username:temp,
-      id:properties.id
-    }
-    return this.http.post('http://localhost:3000/deletewishfromuser',body)
+  deletewish(id:any){
+    return this.http.delete('http://localhost:3000/deletewish/'+id)
   }
-
-  // deletewish(id:any){
-  //   return this.http.delete('http://localhost:3000/deletewish/'+id)
-  // }
 
 
   //register
@@ -100,11 +60,7 @@ export class ApiService {
 
     const body ={
       username,
-      password,
-      // id,
-      // price,
-      // place,
-      // image
+      password
     }
     return this.http.post("http://localhost:3000/register",body)
   }

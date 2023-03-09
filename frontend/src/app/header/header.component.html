@@ -20,14 +20,28 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a routerLink="wishlist">Wishlist</a></li>
-            <li><a routerLink="/properties" href="#propetries">Propetries</a></li>
+            <li><a routerLink="/properties" href="#propetries">Properties</a></li>
         </ul>
 
 
         <!-- login button -->
 
-        <a routerLink="login" class="btn">Log In</a>
-        <!-- <a routerLink="register" class="btn">Register</a> -->
+
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <!-- <li><a routerLink="login">Log In</a></li> -->
+              <li><a routerLink="register" (click)="logout()" >Logout</a></li>
+              
+              <li><a routerLink="#"  >admin</a></li>
+              <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </div>
+
+        <!-- <a routerLink="login" class="btn">Log In</a>
+        <a routerLink="register" (click)="logout()" class="btn">Logout</a> -->
 
     </div>
 

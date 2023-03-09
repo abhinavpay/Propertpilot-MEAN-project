@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+
+
+  logout(){
+    localStorage.removeItem('currentuser')
+    localStorage.removeItem('isUserLogin')
+  }
+
 }

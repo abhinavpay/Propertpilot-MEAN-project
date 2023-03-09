@@ -51,105 +51,40 @@ const viewProperties=(id)=>{
 
 
 
-const addtowishlist= (username,id,name,price,place,image)=>{
-
-    // console.log(username);
-    // let samp = 'a';
-    // console.log(samp);
-
-    return db.User.findOne({username}).then(
+const addtowishlist= (id,name,price,place,image)=>{
+    return db.Wishlist.findOne({username}).then(
 
         (result)=>{
-
-            // console.log(result);
-            
             if(result){
-                
-                
-
-                // if(username==result.username){
-                // }
-                    result.wishlist.push({
-                        id,
-                        name,price,place,image
-                    })
-
-                    result.save()
-
-                
-
-                return{
-                    status:true,
-                        statusCode:200,
-                        message:"property successfully added"
-
-                }
-
-                // return{
-                //     status:false,
-                //     statusCode:401,
-                //     message:"property already added"
-                // }
-            }
-
-
-            else{
                 return{
                     status:false,
-                statusCode:401,
-                message:"Invalid username"
-                  }
+                    statusCode:401,
+                    message:"property already added"
+                }
             }
 
-            // else{
-            //     const newProperty=new db.Wishlist({
-            //         username,password,id,name,price,place,image
-            //     })
+            else{
+                const newProperty=new db.Wishlist({
+                    username,password,id,name,price,place,image
+                })
 
-            //     newProperty.save()
-            //     return{
-            //         status:true,
-            //         statusCode:200,
-            //         message:"property added successfully"
-            //     }
-            // }
-
-        }
-
-    )
-}
-
-
-const getwishlistfromuser=(username)=>{
-    return db.User.findOne({username}).then(
-        (result)=>{
-            if(result){
+                newProperty.save()
                 return{
                     status:true,
                     statusCode:200,
-                    property:result.wishlist
+                    message:"property added successfully"
                 }
             }
 
-            else{
-                return{
-                    status:false,
-                    statusCode:402,
-                    message:"property not found"
-                }
-            }
         }
+
     )
 }
-
-
-
-
 
 
 
 const getwishlist=()=>{
-    return db.User.findOne().then(
+    return db.Wishlist.findOne(username).then(
         (result)=>{
             if(result){
                 return{
@@ -171,106 +106,30 @@ const getwishlist=()=>{
 }
 
 
+// delete wishlist
 
-
-
-
-
-
-
-
-
-const deletewishfromuser=(username,id)=>{
-    return db.User.findOne({username}).then(
+const deletewish=(id)=>{
+    return db.Wishlist.deleteOne({id}).then(
         (result)=>{
-            
             if(result){
-                
-                
-                currentwish=result.wishlist
-                
-                ids=currentwish[0].id
-                
-                // console.log(ids);
-
-                if(ids=id){
-
-
-                    // console.log("success");
-
-                    const data = currentwish.findIndex(item => {
-                        return item.id==ids
-                    })
-
-                    // console.log(data);
-
-                    currentwish.splice(data,1)
-
-                    // console.log(currentwish);
-
-
-                  
-                    
-                                                       
-                }
-                
-                result.save()
-                
-                
                 return{
                     status:true,
                     statusCode:200,
-                    // property:result,
+                    property:result,
                     message:"property deleted from wishlist successfully"
                 }
-             
-                // return{
-                //     status:true,
-                //     statusCode:200,
-                //     property:result,
-                //     message:"property deleted from wishlist successfully"
-                // }
             }
 
-            // else{
-            //     return{
-            //     status:false,
-            //     statusCode:402,
-            //     message:'wishlist is empty'
-            //     }
-            // }
+            else{
+                return{
+                status:false,
+                statusCode:402,
+                message:'wislist is empty'
+                }
+            }
         }
     )
-
 }
-
-
-
-
-// delete wishlist
-
-// const deletewish=(id)=>{
-//     return db.User.deleteOne({id}).then(
-//         (result)=>{
-//             if(result){
-//                 return{
-//                     status:true,
-//                     statusCode:200,
-//                     property:result,
-//                     message:"property deleted from wishlist successfully"
-//                 }
-//             }
-
-//             else{
-//                 return{
-//                 status:false,
-//                 statusCode:402,
-//                 message:'wislist is empty'
-//                 }
-//             }
-//         }
-//     )
-// }
 
 
 //register
@@ -290,7 +149,7 @@ const register = (username,password)=>{
 
             else{
 
-                const newUser = new db.User({
+                const newUser = new db.Wishlist({
                     username:username,
                     password:password
                 })
@@ -321,12 +180,10 @@ const login = (username,password)=>{
 
         user =>{
             if(user){
-                currentuser=user.username
                 return{
                     status:true,
                   statusCode:200,
-                  message:"Login Successfull",
-                    currentuser:user.username
+                  message:"Login Successfull"
         
                   }
             }
@@ -419,12 +276,9 @@ module.exports={
     viewProperties,
     addtowishlist,
     getwishlist,
-    // deletewish,
+    deletewish,
     register,
     login,
     contactlist,
-    getContactlist,
-    getwishlistfromuser,
-    deletewishfromuser,
-      
+    getContactlist   
 }

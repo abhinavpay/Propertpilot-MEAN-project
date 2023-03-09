@@ -4,20 +4,27 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">Mesaage</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let contact of allContact, let i = index">
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th scope="row">{{i+1}}</th>
+        <td>{{contact.name}}</td>
+        <td>{{contact.phone}}</td>
+        <td>{{contact.address}}</td>
+        <td>{{contact.message}}</td>
+        <td >
+          <button class="btn btn-success m-1">Accept</button>
+          <button class="btn btn-danger" >Reject</button>
+        </td>
       </tr>
       <tr>
-        <th scope="row">2</th>
+        <!-- <th scope="row">2</th>
         <td>Jacob</td>
         <td>Thornton</td>
         <td>@fat</td>
@@ -26,7 +33,7 @@
         <th scope="row">3</th>
         <td colspan="2">Larry the Bird</td>
         <td>@twitter</td>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
 </div>

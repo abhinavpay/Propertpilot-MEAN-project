@@ -61,14 +61,8 @@ app.get('/view-properties/:id',(req,res)=>{
 
 app.post('/addtowishlist',(req,res)=>{
 
-    // console.log(req.body);
-    dataservices.addtowishlist(
-        req.body.username,
-        req.body.id,
-        req.body.name,req.body.price,req.body.place,req.body.image
-        ).then(
+    dataservices.addtowishlist(req.body.id,req.body.name,req.body.price,req.body.place,req.body.image).then(
         result=>{
-            
             res.status(result.statusCode).json(result)
         }
     )
@@ -87,40 +81,16 @@ app.get('/getwishlist',(req,res)=>{
 })
 
 
+//delete wishlist
 
-app.post('/getwishlistfromuser',(req,res)=>{
-
-    dataservices.getwishlistfromuser(req.body.username).then(
-        result=>{
-            res.status(result.statusCode).json(result)
-        }
-    )
-})
-
-
-
-
-// delete wishlist
-
-
-
-
-app.post('/deletewishfromuser',(req,res)=>{
-    dataservices.deletewishfromuser(req.body.username,req.body.id).then(
+app.delete('/deletewish/:id',(req,res)=>{
+    dataservices.deletewish(req.params.id).then(
         result=>{
             res.status(result.statusCode).json.result
         }
     )
 })
 
-
-// app.delete('/deletewish/:id',(req,res)=>{
-//     dataservices.deletewish(req.params.id).then(
-//         result=>{
-//             res.status(result.statusCode).json.result
-//         }
-//     )
-// })
 
 //register
 

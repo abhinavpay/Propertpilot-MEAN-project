@@ -38,12 +38,8 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       this.api.login(username,password).subscribe(
         (result:any)=>{
-          localStorage.setItem('currentuser', result.currentuser)
-          localStorage.setItem('isUserLogin', 'true')
-          // localStorage.setItem('currentuser',JSON.stringify(result.currentuser))
           alert(result.message)
-          this.router.navigateByUrl('properties')
-          
+          this.router.navigateByUrl('admin')
         },
        (result:any)=>{
         alert(result.error.message)
