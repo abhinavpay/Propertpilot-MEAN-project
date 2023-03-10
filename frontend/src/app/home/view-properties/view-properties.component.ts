@@ -14,16 +14,19 @@ export class ViewPropertiesComponent implements OnInit {
   
   property:any=[];
 
+  // status=this.api.check.status ? true : false;
+  
+ status=false
   
   constructor(private api:ApiService,private route:ActivatedRoute,private fb:FormBuilder,private router:Router){}
 
 
-
+  
 
 
   ngOnInit(): void {
 
-
+    this.status = localStorage.getItem('currentuser') ? true :false
     
     let id = this.route.snapshot.paramMap.get('id')
     console.warn(id)
@@ -49,6 +52,18 @@ export class ViewPropertiesComponent implements OnInit {
 
   })
 
+
+  check(){
+
+    if(localStorage.getItem('currentuser')){
+
+    }
+    else{
+      alert("login first")
+      this.router.navigateByUrl('login')
+    }
+
+  }
 
   
 

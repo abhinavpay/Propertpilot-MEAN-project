@@ -10,6 +10,9 @@ export class ApiService {
   currentUser:any;
  
  
+  check={
+    
+  }
 
   constructor(private http:HttpClient) { }
 

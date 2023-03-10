@@ -68,8 +68,8 @@
 
     <div >
       
-        <button  class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Contact Owner</button>
-        <button  class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Contact Owner</button>
+        <button *ngIf="!status" class="btn"  (click)="check()">Contact Owner</button>
+        <button *ngIf="status"  class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Contact Owner</button>
         
     </div>
 
